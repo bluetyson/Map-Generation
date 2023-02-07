@@ -23,6 +23,8 @@ from countrysides.forest import Forest
 from countrysides.lake import Lake
 from countrysides.land import Land
 
+from downtown.chgowiz import Tavern,Inn,Blacksmith,Carpenter,Woodcrafter,Chirurgeon,Drover,Jeweler,Mason,Merchant,Leathersmith,Tailor,Acater,Apothecary,Bowyer,Armorsmith,Weaponsmith,Locksmith
+
 def generate_regions(regions_size):
     '''
     Crée la carte et la découpe en Polygon qui deviendront nos district
@@ -218,34 +220,92 @@ def build_map(district, map_elements, city_elements, nb_houses):
 		for h in district_buildings:
 			if isinstance(h, Polygon):
 				rand = random.randint(0, 100)
-				if rand > 97:
-					d._sub_areas.append(Fort(h))
-				elif rand > 95:
-					d._sub_areas.append(Townhall(h))
-				elif rand > 90:
-					d._sub_areas.append(University(h))
-				elif rand > 85:
-					d._sub_areas.append(Monastry(h))
-				elif rand > 83:
-					d._sub_areas.append(Cathedral(h))
-				elif rand > 80:
-					d._sub_areas.append(Market(h))
-				elif rand > 75:
-					d._sub_areas.append(Park(h))
-				elif rand > 70:
-					d._sub_areas.append(Church(h))
-				else:
-					house = None
-					if rand > 65:
-						house = Mansion(h)
-					else:
-						house = House(h)
-					d._sub_areas.append(house)
-					interior_coords = []
-					for interior in house._polygon.interiors:
-						interior_coords += interior.coords[:]
-					d._sub_areas.append(Garden(Polygon(interior_coords)))
+				if 1 == 2:
 					
+					if rand > 97:
+						d._sub_areas.append(Fort(h))
+					elif rand > 95:
+						d._sub_areas.append(Townhall(h))
+					elif rand > 90:
+						d._sub_areas.append(University(h))
+					elif rand > 85:
+						d._sub_areas.append(Monastry(h))
+					elif rand > 83:
+						d._sub_areas.append(Cathedral(h))
+					elif rand > 80:
+						d._sub_areas.append(Market(h))
+					elif rand > 75:
+						d._sub_areas.append(Park(h))
+					elif rand > 70:
+						d._sub_areas.append(Church(h))
+					else:
+						house = None
+						if rand > 65:
+							house = Mansion(h)
+						else:
+							house = House(h)
+						d._sub_areas.append(house)
+						interior_coords = []
+						for interior in house._polygon.interiors:
+							interior_coords += interior.coords[:]
+						d._sub_areas.append(Garden(Polygon(interior_coords)))
+				else:
+					rand = random.randint(0, 620)
+					print("doning cwiz", rand)
+					if rand <= 20:
+						d._sub_areas.append(Tavern(h))
+					elif rand <= 24:
+						d._sub_areas.append(Inn(h))
+					elif rand <= 29:
+						d._sub_areas.append(Blacksmith(h))
+					elif rand <= 44:
+						d._sub_areas.append(Carpenter(h))
+					elif rand <= 52:
+						d._sub_areas.append(Woodcrafter(h))
+					elif rand <= 57:
+						d._sub_areas.append(Chirurgeon(h))
+					elif rand <= 89:
+						d._sub_areas.append(Drover(h))
+					elif rand <= 109:
+						d._sub_areas.append(Jeweler(h))
+					elif rand <= 125:
+						d._sub_areas.append(Mason(h))
+					elif rand <= 145:
+						d._sub_areas.append(Merchant(h))
+					elif rand <= 149:
+						d._sub_areas.append(Leathersmith(h))
+					elif rand <= 181:
+						d._sub_areas.append(Tailor(h))
+					elif rand <= 188:
+						d._sub_areas.append(Acater(h))
+					elif rand <= 193:
+						d._sub_areas.append(Apothecary(h))
+					elif rand <= 196:
+						d._sub_areas.append(Bowyer(h))
+					elif rand <= 199:
+						d._sub_areas.append(Armorsmith(h))
+					elif rand <= 202:
+						d._sub_areas.append(Weaponsmith(h))
+					elif rand <= 206:
+						d._sub_areas.append(Locksmith(h))						
+					else:
+						house = None
+						if rand > 599:
+							house = Mansion(h)
+						else:
+							house = House(h)
+						d._sub_areas.append(house)
+						interior_coords = []
+						for interior in house._polygon.interiors:
+							interior_coords += interior.coords[:]
+						d._sub_areas.append(Garden(Polygon(interior_coords)))
+					
+					#20 taverns	#4 inns - 28
+					#5 blacksmiths;	15 carpenters;	8 woodcrafters;	5 chirurgeons;	32 drovers;	20 jewelers;	16 masons;	20 merchants;	4 leathersmiths;	
+					#32 tailors;	7 acaters;	5 apothecarys;	3 bowyers;	3 armorsmiths;	3 weaponsmiths;	4 locksmiths
+					#print(d._sub_areas)
+					
+	print("LENMAP",len(map_elements), nb_houses)					
 	if len(map_elements) > nb_houses:
 		to_not_split_buildings = map_elements[nb_houses:]
 
