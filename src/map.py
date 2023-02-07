@@ -251,7 +251,11 @@ def build_map(district, map_elements, city_elements, nb_houses):
 						d._sub_areas.append(Garden(Polygon(interior_coords)))
 				else:
 					rand = random.randint(0, 620)
-					print("doning cwiz", rand)
+					print("doinng cwiz", rand)
+					#20 taverns	#4 inns - 28
+					#5 blacksmiths;	15 carpenters;	8 woodcrafters;	5 chirurgeons;	32 drovers;	20 jewelers;	16 masons;	20 merchants;	4 leathersmiths;	
+					#32 tailors;	7 acaters;	5 apothecarys;	3 bowyers;	3 armorsmiths;	3 weaponsmiths;	4 locksmiths
+
 					if rand <= 20:
 						d._sub_areas.append(Tavern(h))
 					elif rand <= 24:
@@ -300,9 +304,6 @@ def build_map(district, map_elements, city_elements, nb_houses):
 							interior_coords += interior.coords[:]
 						d._sub_areas.append(Garden(Polygon(interior_coords)))
 					
-					#20 taverns	#4 inns - 28
-					#5 blacksmiths;	15 carpenters;	8 woodcrafters;	5 chirurgeons;	32 drovers;	20 jewelers;	16 masons;	20 merchants;	4 leathersmiths;	
-					#32 tailors;	7 acaters;	5 apothecarys;	3 bowyers;	3 armorsmiths;	3 weaponsmiths;	4 locksmiths
 					#print(d._sub_areas)
 					
 	print("LENMAP",len(map_elements), nb_houses)					
