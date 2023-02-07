@@ -70,5 +70,5 @@ class City(Area):
 
 
 if __name__ == "__main__":
-    city = City(30000, has_castle=True)
-    tools.json(city, './tests/generated_city/big_city_castle.json')
+    city = City(9000, 15000,has_castle=False, has_walls=False)
+    tools.json(city, 'big_city_chgowiz.json')
